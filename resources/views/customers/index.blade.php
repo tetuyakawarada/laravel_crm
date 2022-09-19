@@ -29,6 +29,6 @@
         </tbody>
     </table>
 
-    <button tyepe="button" onclick="location.href='{{ route('customers.create') }}'">新規作成</button>
+    <button tyepe="button" onclick="location.href='/customers/address'">新規作成</button>
 
 @endsection

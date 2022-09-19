@@ -19,12 +19,6 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
-    public function address()
-    {
-        return view('customers.address');
-    }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,7 +37,17 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new customer;
+
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->postcode = $request->postcode;
+        $customer->address = $request->address;
+        $customer->phone = $request->phone;
+
+        $customer->save();
+
+        return redirect('/customers');
     }
 
     /**
@@ -89,5 +93,10 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         //
+    }
+
+    public function address()
+    {
+        return view('customers.address');
     }
 }
