@@ -28,7 +28,13 @@
     </table>
 
     <button tyepe="button" onclick="location.href='{{ route('customers.edit', $customer) }}'">編集画面</button><br>
-    削除するボタン<br>
+
+    <form action="/customers/{{ $customer->id }}" method="post">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="削除する" onclick="if(!confirm('削除しますか？')){return false};">
+    </form>
+
     <button tyepe="button" onclick="location.href='{{ route('customers.index') }}'">一覧へ戻る</button>
 
 
