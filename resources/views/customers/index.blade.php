@@ -18,7 +18,7 @@
         <tbody>
             @foreach ($customers as $customer)
                 <tr>
-                    <td>{{ $customer->id }}</td>
+                    <td><a href="{{ route('customers.show', $customer) }}">{{ $customer->id }}</a></td>
                     <td>{{ $customer->name }}</td>
                     <td>{{ $customer->email }}</td>
                     <td>{{ $customer->postcode }}</td>

@@ -19,6 +19,12 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+    public function address()
+    {
+        return view('customers.address');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +54,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        return view('customers.show');
+        return view('customers.show')->with(compact('customer'));
     }
 
     /**
