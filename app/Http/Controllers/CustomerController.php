@@ -67,9 +67,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        return view('customers.edit');
+        $customer = Customer::find($id);
+        return view('customers.edit')->with(compact('customer'));
     }
 
     /**
@@ -81,8 +82,17 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $customer->name = $request->name;
+        $customer->email = $request->email;
+        $customer->postcode = $request->postcode;
+        $customer->address = $request->address;
+        $customer->phone = $request->phone;
+
+        $customer->save();
+
+        return redirect('/customers');
     }
+
 
     /**
      * Remove the specified resource from storage.

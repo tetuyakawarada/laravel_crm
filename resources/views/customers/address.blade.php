@@ -6,7 +6,7 @@
     <div>
         郵便番号検索
         <input type="text" name="title" id="postcode" placeholder="検索したい郵便番号">
-        <button tyepe="button" onclick="location.href=''">検索</button>
+        <button tyepe="button" onclick="location.href='{{ route('customers.create') }}'">検索</button>
     </div>
 
     <div>

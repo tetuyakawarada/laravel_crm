@@ -9,18 +9,22 @@
             <label for="name">名前 </label>
             <input type="text" name="name" id="name" value="{{ old('name') }}">
         </div>
+
         <div>
             <label for="email">メールアドレス </label>
             <input type="text" name="email" id="email" value="{{ old('email') }}">
         </div>
+
         <div>
             <label for="postcode">郵便番号 </label>
             <input type="text" name="postcode" id="postcode" value="{{ old('postcode') }}">
         </div>
+
         <div>
             <label for="address">住所 </label>
-            <input type="text" name="address" id="address" value="{{ old('address') }}">
+            <textarea type="text" name="address" id="address" value="{{ old('address') }}"></textarea>
         </div>
+
         <div>
             <label for="phone">電話番号 </label>
             <input type="text" name="phone" id="phone" value="{{ old('phone') }}">
