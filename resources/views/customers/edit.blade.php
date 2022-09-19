@@ -3,6 +3,19 @@
 @section('content')
     <h1>編集画面</h1>
 
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="/customers/{{ $customer->id }}" method="post">
         @csrf
         @method('PATCH')
@@ -25,7 +38,7 @@
 
         <div>
             <label for="address">住所 </label>
-            <input type="textarea" name="address" id="address" value="{{ old('address', $customer->address) }}">
+            <input type="text" name="address" id="address" value="{{ old('address', $customer->address) }}">
         </div>
 
         <div>

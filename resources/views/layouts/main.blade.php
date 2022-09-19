@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 <head>
     <meta charset="UTF-8">

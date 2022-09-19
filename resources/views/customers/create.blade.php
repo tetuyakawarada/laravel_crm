@@ -3,6 +3,19 @@
 @section('content')
     <h1>新規登録画面</h1>
 
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('customers.store') }}" method="post">
         @csrf
         <div>
@@ -22,7 +35,7 @@
 
         <div>
             <label for="address">住所 </label>
-            <textarea type="text" name="address" id="address" value="{{ old('address') }}"></textarea>
+            <input type="text" name="address" id="address" value="{{ old('address') }}">
         </div>
 
         <div>
