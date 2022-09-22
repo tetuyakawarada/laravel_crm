@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('customers/address', [App\Http\Controllers\CustomerController::class, 'address']);
+
+Route::resource('customers', App\Http\Controllers\CustomerController::class);
