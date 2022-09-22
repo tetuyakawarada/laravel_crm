@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use GuzzleHttp\Client;
+
 use App\Http\Requests\CustomerRequest;
+use App\Http\Requests\PostCodeRequest;
 
 
 class CustomerController extends Controller
@@ -20,15 +23,43 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(PostCodeRequest $request)
     {
-        return view('customers.create');
+        $method = 'GET';
+        $zipcode = $request->postcode;
+        $url = 'https://zipcloud.ibsnet.co.jp/api/search?zipcode=' . $zipcode;
+
+        $client = new Client();
+        try {
+            $response = $client->request($method, $url);
+            $body = $response->getBody();
+            $zip_cloud = json_decode($body, true);
+            $result = $zip_cloud['results'][0];
+            $address = $result['address1'] . $result['address2'] . $result['address3'];
+            $postcode = $result['zipcode'];
+        } catch (\Throwable $th) {
+            $address = null;
+            $postcode = null;
+        }
+        return view('customers.create')->with(compact('address', 'postcode'));
     }
+
+
+
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
